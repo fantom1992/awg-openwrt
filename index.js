@@ -15,9 +15,9 @@ if (!/^25\.\d+\.\d+(-rc\d+)?$/.test(version)) {
   process.exit(1);
 }
 
-// Жёстко под SNR AX2
-const TARGET = 'mediatek';
-const SUBTARGET = 'filogic';
+// Под ASUS RT-AC58U
+const TARGET = 'ipq40xx';
+const SUBTARGET = 'generic';
 
 const PACKAGES_URL =
   `https://downloads.openwrt.org/releases/${version}/targets/${TARGET}/${SUBTARGET}/packages/`;
