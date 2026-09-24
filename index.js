@@ -40,15 +40,13 @@ async function getKernelInfo() {
     throw new Error('Packages directory is empty (build not ready yet)');
   }
 
+  // Ищем файл ядра. Формат: kernel-6.12.74~HASH-r1.apk
   for (const name of apkFiles) {
-    const match = name.match(
-      /kernel_\d+\.\d+\.\d+(?:-\d+)?[-~]([a-f0-9]+)(?:-r\d+)?_([a-zA-Z0-9_-]+)\.apk$/
-    );
-
+    const match = name.match(/^kernel-[\d.]+~([a-f0-9]+)-r\d+\.apk$/);
     if (match) {
       return {
         vermagic: match[1],
-        pkgarch: match[2],
+        pkgarch: 'arm_cortex-a7_neon-vfpv4', // задаём вручную
       };
     }
   }
